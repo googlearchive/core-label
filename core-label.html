@@ -1,0 +1,78 @@
+<!--
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<polymer-element name="core-label" attributes="for">
+  <script>
+    (function() {
+
+      var ID = 0;
+      function generate(node) {
+        if (!node.id) {
+          node.id = 'core-label-' + ID++;
+        }
+        return node.id;
+      }
+
+      Polymer('core-label', {
+        created: function() {
+          this._forElement = null;
+          this._labelElement = null;
+        },
+        ready: function() {
+          this._labelElement = this.querySelector('[label]');
+          if (!this.for) {
+            this._forElement = this.querySelector('[for]');
+            this._tie(this._labelElement, this._forElement);
+          }
+        },
+        _listen: function(node) {
+          this._tapFn = function() {
+            node.focus();
+            node.click();
+            node.dispatchEvent(new CustomEvent('tap', true, true));
+          }
+          Polymer.addEventListener(this._labelElement, 'tap', this._tapFn);
+        },
+        unlisten: function() {
+          if (this._tapFn) {
+            Polymer.removeEventListener(this._labelElement, 'tap', this._tapFn);
+          }
+        },
+        _tie: function() {
+          this._forElement.setAttribute('aria-labelledby', generate(this._labelElement));
+          this._listen(this._forElement);
+        },
+        _findScope: function() {
+          var n = this.parentNode;
+          while(n.parentNode) {
+            n = n.parentNode;
+          }
+          return n;
+        },
+        forChanged: function(oldFor, newFor) {
+          if (this._forElement) {
+            this._forElement.removeAttribute('aria-labelledby');
+            this._unlisten(this._labelElement);
+          }
+          var scope = this._findScope();
+          if (!scope) {
+            return;
+          }
+          this._forElement = scope.querySelector(newFor);
+          if (this._forElement) {
+            this._tie();
+          }
+        }
+      });
+    })();
+  </script>
+</polymer-element>

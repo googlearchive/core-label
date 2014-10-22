@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Core Label</title>
+  <link rel="import" href="core-label.html">
+  <link rel="import" href="../paper-checkbox/paper-checkbox.html">
+</head>
+<body>
+
+  <label>regular label<input type="checkbox"></label>
+
+  <br>
+
+  <label>regular label 2<input></label>
+
+  <br>
+
+  <core-label>
+    <span label>label next to checkbox</span>
+    <input for type="checkbox">
+  </core-label>
+
+  <br>
+
+  <core-label for="#quux">
+    <span label>label for checkbox</span>
+  </core-label>
+  <input id="quux" type="checkbox">
+
+  <br>
+
+  <core-label for="#foo">
+    <img label src="http://placehold.it/200x200" alt="200x200 placeholder image">
+    <span>image (with alt attribute) label</span>
+  </core-label>
+
+  <input id="foo" type="checkbox">
+
+  <br>
+
+  <core-label for=".bar">
+    <span label>label for a class .bar</span>
+  </core-label>
+  <input class="bar" type="checkbox">
+
+  <br>
+
+  <core-label>
+    <span label="">input label</span>
+    <input for>
+  </core-label>
+
+  <core-label>
+    <span label>paper checkbox</span>
+    <paper-checkbox for></paper-checkbox>
+  </core-label>
+
+</body>
+</html>
