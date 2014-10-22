@@ -15,6 +15,7 @@
   <title>Core Label</title>
   <link rel="import" href="core-label.html">
   <link rel="import" href="../paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="../paper-slider/paper-slider.html">
 </head>
 <body>
 
@@ -26,9 +27,18 @@
 
   <br>
 
+  <label>
+    <span label>a</span>
+    <input>
+    <span>b</span>
+  </label>
+
+  <br>
+
   <core-label>
     <span label>label next to checkbox</span>
     <input for type="checkbox">
+    <span>something</span>
   </core-label>
 
   <br>
@@ -61,10 +71,54 @@
     <input for>
   </core-label>
 
+  <br>
+
   <core-label>
     <span label>paper checkbox</span>
     <paper-checkbox for></paper-checkbox>
   </core-label>
+
+  <br>
+
+  <core-label>
+    <span label>paper slider</span>
+    <paper-slider min="0" max="100" value="50" for></paper-slider>
+  </core-label>
+
+  <br>
+
+  <core-label>
+    <span label="">input type range</span>
+    <input type="range" for>
+  </core-label>
+
+  <br>
+
+  <core-label>
+    <span label>a</span>
+    <input type="text" for>
+    <span>b</span>
+  </core-label>
+
+  <br>
+
+  <core-label>
+    <span>c</span>
+    <span>d</span>
+    <button for="">hi</button>
+  </core-label>
+
+  <br>
+
+  <core-label for=".two">
+    <span>Hi!</span>
+  </core-label>
+
+  <button class="one">sup</button>
+  <button class="two">whazzup</button>
+
+  <script>
+  </script>
 
 </body>
 </html>

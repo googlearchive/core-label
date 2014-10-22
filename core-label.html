@@ -10,7 +10,7 @@
 
 <link rel="import" href="../polymer/polymer.html">
 
-<polymer-element name="core-label" attributes="for">
+<polymer-element name="core-label">
   <script>
     (function() {
 
@@ -23,33 +23,36 @@
       }
 
       Polymer('core-label', {
+        publish: {
+          'for': {reflect: true, value: ''}
+        },
+        eventDelegates: {
+          'tap': 'tapHandler'
+        },
         created: function() {
           this._forElement = null;
           this._labelElement = null;
         },
         ready: function() {
-          this._labelElement = this.querySelector('[label]');
+          this._labelElement = this.querySelector('[label], :first-child');
           if (!this.for) {
-            this._forElement = this.querySelector(':not([label])');
+            this._forElement = this.querySelector('[for]');
             this._tie(this._labelElement, this._forElement);
           }
         },
-        _listen: function(node) {
-          this._tapFn = function() {
-            node.focus();
-            node.click();
-            node.dispatchEvent(new CustomEvent('tap', true, true));
+        tapHandler: function(ev) {
+          if (!this._forElement) {
+            return;
           }
-          Polymer.addEventListener(this._labelElement, 'tap', this._tapFn);
-        },
-        unlisten: function() {
-          if (this._tapFn) {
-            Polymer.removeEventListener(this._labelElement, 'tap', this._tapFn);
+          if (ev.target === this._forElement) {
+            return;
           }
+          this._forElement.focus();
+          this._forElement.click();
+          this.fire('tap', null, this._forElement);
         },
         _tie: function() {
           this._forElement.setAttribute('aria-labelledby', generate(this._labelElement));
-          this._listen(this._forElement);
         },
         _findScope: function() {
           var n = this.parentNode;
@@ -61,7 +64,6 @@
         forChanged: function(oldFor, newFor) {
           if (this._forElement) {
             this._forElement.removeAttribute('aria-labelledby');
-            this._unlisten(this._labelElement);
           }
           var scope = this._findScope();
           if (!scope) {
