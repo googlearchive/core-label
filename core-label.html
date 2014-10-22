@@ -30,7 +30,7 @@
         ready: function() {
           this._labelElement = this.querySelector('[label]');
           if (!this.for) {
-            this._forElement = this.querySelector('[for]');
+            this._forElement = this.querySelector(':not([label])');
             this._tie(this._labelElement, this._forElement);
           }
         },
