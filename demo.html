@@ -16,6 +16,7 @@
   <link rel="import" href="core-label.html">
   <link rel="import" href="../paper-checkbox/paper-checkbox.html">
   <link rel="import" href="../paper-slider/paper-slider.html">
+  <link rel="import" href="../paper-button/paper-button.html">
 </head>
 <body>
 
@@ -28,31 +29,47 @@
   <br>
 
   <label>
-    <span label>a</span>
+    a
     <input>
-    <span>b</span>
+    b
   </label>
 
   <br>
 
+  <label for="native">
+    hi
+  </label>
+
+  <button id="native">hello</button>
+
+  <br>
+
+  <label>
+    a
+    <button>b</button>
+    c
+  </label>
+
+  <hr>
+
   <core-label>
-    <span label>label next to checkbox</span>
+    label next to checkbox
     <input for type="checkbox">
-    <span>something</span>
+    something
   </core-label>
 
   <br>
 
   <core-label for="#quux">
-    <span label>label for checkbox</span>
+    label for checkbox
   </core-label>
   <input id="quux" type="checkbox">
 
   <br>
 
   <core-label for="#foo">
-    <img label src="http://placehold.it/200x200" alt="200x200 placeholder image">
-    <span>image (with alt attribute) label</span>
+    <img src="http://placehold.it/200x200" alt="200x200 placeholder image">
+    image (with alt attribute) label
   </core-label>
 
   <input id="foo" type="checkbox">
@@ -60,65 +77,70 @@
   <br>
 
   <core-label for=".bar">
-    <span label>label for a class .bar</span>
+    label for a class .bar
   </core-label>
   <input class="bar" type="checkbox">
 
   <br>
 
   <core-label>
-    <span label="">input label</span>
+    input label
     <input for>
   </core-label>
 
   <br>
 
   <core-label>
-    <span label>paper checkbox</span>
+    paper checkbox
     <paper-checkbox for></paper-checkbox>
   </core-label>
 
   <br>
 
   <core-label>
-    <span label>paper slider</span>
+    paper slider
     <paper-slider min="0" max="100" value="50" for></paper-slider>
   </core-label>
 
   <br>
 
   <core-label>
-    <span label="">input type range</span>
+    input type range
     <input type="range" for>
   </core-label>
 
   <br>
 
   <core-label>
-    <span label>a</span>
+    a
     <input type="text" for>
-    <span>b</span>
+    b
   </core-label>
 
   <br>
 
   <core-label>
-    <span>c</span>
-    <span>d</span>
-    <button for="">hi</button>
+    c
+    <button for>hi</button>
+    d
+  </core-label>
+
+
+  <br>
+
+  <core-label>
+    label this button
+    <paper-button for>labelled by parent</paper-button>
   </core-label>
 
   <br>
 
   <core-label for=".two">
-    <span>Hi!</span>
+    Hi!
   </core-label>
 
   <button class="one">sup</button>
   <button class="two">whazzup</button>
-
-  <script>
-  </script>
 
 </body>
 </html>
