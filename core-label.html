@@ -100,7 +100,7 @@ All taps on the `core-label` will be forwarded to the "target" element.
         },
         _findScope: function() {
           var n = this.parentNode;
-          while(n.parentNode) {
+          while(n && n.parentNode) {
             n = n.parentNode;
           }
           return n;
