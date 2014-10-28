@@ -56,15 +56,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     suite('targeting', function() {
       function expectedTarget(targetSel, labelSel, cb) {
         flush(function() {
-          var targetEl = container.querySelector(targetSel);
-          var labelEl = container.querySelector(labelSel);
-          assert.ok(targetEl.hasAttribute('aria-labelledby'), 'has aria labelledby');
-          assert.equal(targetEl.getAttribute('aria-labelledby'), labelEl.id, 'aria-labelledby points to core-label');
-          if (labelEl.hasAttribute('for')) {
-            assert.equal(labelEl.for, targetSel, 'for property reflected');
-          }
-          cb();
-        });
+          flush(function() {
+            var targetEl = container.querySelector(targetSel);
+            var labelEl = container.querySelector(labelSel);
+            assert.ok(targetEl.hasAttribute('aria-labelledby'), 'has aria labelledby');
+            assert.equal(targetEl.getAttribute('aria-labelledby'), labelEl.id, 'aria-labelledby points to core-label');
+            if (labelEl.hasAttribute('for')) {
+              assert.equal(labelEl.for, targetSel, 'for property reflected');
+            }
+            cb();
+          });
+        }):
       }
 
       test('nested target', function(done) {
@@ -112,20 +114,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       test('nested -> #one', function(done) {
         label.for = '#one';
         flush(function() {
-          assert.equal(one.getAttribute('aria-labelledby'), label.id);
-          assert.notOk(two.hasAttribute('aria-labelledby'));
-          assert.notOk(nested.hasAttribute('aria-labelledby'));
-          done();
+          flush(function() {
+            assert.equal(one.getAttribute('aria-labelledby'), label.id);
+            assert.notOk(two.hasAttribute('aria-labelledby'));
+            assert.notOk(nested.hasAttribute('aria-labelledby'));
+            done();
+          });
         });
       });
 
       test('#one -> #two', function(done) {
         label.for = '#two';
         flush(function() {
-          assert.equal(two.getAttribute('aria-labelledby'), label.id);
-          assert.notOk(one.hasAttribute('aria-labelledby'));
-          assert.notOk(nested.hasAttribute('aria-labelledby'));
-          done();
+          flush(function() {
+            assert.equal(two.getAttribute('aria-labelledby'), label.id);
+            assert.notOk(one.hasAttribute('aria-labelledby'));
+            assert.notOk(nested.hasAttribute('aria-labelledby'));
+            done();
+          });
         });
       });
 
