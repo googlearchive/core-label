@@ -53,95 +53,95 @@
 
   <hr>
 
-  <core-label>
+  <label is="core-label">
     label next to checkbox
-    <input for type="checkbox">
+    <input type="checkbox">
     something
-  </core-label>
+  </label>
 
   <br>
 
-  <core-label for="#quux">
+  <label for="quux" is="core-label" id="quux-label">
     label for checkbox
-  </core-label>
+  </label>
   <input id="quux" type="checkbox">
 
   <br>
 
-  <core-label for="#foo">
+  <label for="foo" is="core-label" id="foo-label">
     <img src="http://placehold.it/200x200" alt="200x200 placeholder image">
     image (with alt attribute) label
-  </core-label>
+  </label>
 
   <input id="foo" type="checkbox">
 
   <br>
 
-  <core-label for=".bar">
+  <label for="bar" is="core-label" >
     label for a class .bar
-  </core-label>
+  </label>
   <input class="bar" type="checkbox">
 
   <br>
 
-  <core-label>
+  <label is="core-label">
     input label
-    <input for>
-  </core-label>
+    <input>
+  </label>
 
   <br>
 
-  <core-label>
+  <label is="core-label">
     paper checkbox
-    <paper-checkbox for></paper-checkbox>
-  </core-label>
+    <paper-checkbox></paper-checkbox>
+  </label>
 
   <br>
 
-  <core-label>
+  <label is="core-label">
     paper slider
-    <paper-slider min="0" max="100" value="50" for></paper-slider>
-  </core-label>
+    <paper-slider min="0" max="100" value="50"></paper-slider>
+  </label>
 
   <br>
 
-  <core-label>
+  <label is="core-label">
     input type range
-    <input type="range" for>
-  </core-label>
+    <input type="range">
+  </label>
 
   <br>
 
-  <core-label>
+  <label is="core-label">
     a
-    <input type="text" for>
+    <input type="text">
     b
-  </core-label>
+  </label>
 
   <br>
 
-  <core-label>
+  <label is="core-label">
     c
     <button for>hi</button>
     d
-  </core-label>
+  </label>
 
 
   <br>
 
-  <core-label>
+  <label is="core-label">
     label this button
-    <paper-button for>labelled by parent</paper-button>
-  </core-label>
+    <paper-button>labelled by parent</paper-button>
+  </label>
 
   <br>
 
-  <core-label for=".two">
+  <label for="two" is="core-label" id="two-label">
     Hi!
-  </core-label>
+  </label>
 
-  <button class="one">sup</button>
-  <button class="two">whazzup</button>
+  <button class="one" id="one">sup</button>
+  <button class="two" id="two">whazzup</button>
 
 </body>
 </html>
