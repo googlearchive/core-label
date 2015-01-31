@@ -76,7 +76,7 @@ All taps on the `core-label` will be forwarded to the "target" element.
           generate(this);
           this._forElement = null;
         },
-        ready: function() {
+        domReady: function() {
           if (!this.for) {
             this._forElement = this.querySelector('[for]');
             this._tie();
